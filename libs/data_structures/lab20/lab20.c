@@ -1,10 +1,9 @@
 #include <stdio.h>
 #include "D:\lab__dm\libs\data_structures\matrix\matrix.h"
-#include "D:\Test\string\String\tasks\string_.h"
 #include "assert.h"
 #include "lab20.h"
-
-int atoi(char *string);
+#include <malloc.h>
+#include <string.h>
 
 int **task1(int n, int query[][4], size_t size) {
     matrix result = getMemMatrix(n, n);
@@ -208,7 +207,7 @@ void test_task_3() {
     }
 }
 
-void task_4(char **cpdomains, int size) {
+/*void task_4(char **cpdomains, int size) {
     int domains_number = 0;
     for (int i = 0; i < size; i++) {
         size_t len = strlen(cpdomains[i]);
@@ -250,11 +249,70 @@ void test_task_4() {
     char *cpdomains_2[] = {"900 google.mail.com", "50 yahoo.com", "1 intel.mail.com", "5 wiki.org"};
     int size_2 = 4;
     task_4(cpdomains_2, size_2);
+}*/
+
+void fill_matrix(matrix m, matrix *new_matrix, int rows, int cols) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            if (m.values[i][j] == 1) {
+                if (i != 0) {
+                    new_matrix->values[i][j] = new_matrix->values[i - 1][j] + 1;
+                } else {
+                    new_matrix->values[i][j] = 1;
+                }
+            } else {
+                new_matrix->values[i][j] = 0;
+            }
+        }
+    }
 }
+
+int task_5(matrix m, int rows, int cols) {
+    matrix new_matrix = getMemMatrix(rows, cols);
+    fill_matrix(m, &new_matrix, rows, cols);
+    int result = 0;
+
+    for (int i = 0; i < cols; i++) {
+        for (int j = 0; j < rows; j++) {
+            for (int k = i + 1; k < cols + 1; k++) {
+                int min = new_matrix.values[j][i];
+
+                for (int g = i; g < k; g++) {
+                    if (new_matrix.values[j][g] < min)
+                        min = new_matrix.values[j][g];
+                }
+
+                result += min;
+            }
+        }
+    }
+
+    return result;
+}
+
+void test_task_5() {
+    matrix matrix_1 = createMatrixFromArray((int[]) {
+                                                    1, 0, 1,
+                                                    1, 1, 0,
+                                                    1, 1, 0},
+                                            3, 3);
+    int result_1 = task_5(matrix_1, 3, 3);
+    assert(result_1 == 13);
+
+    matrix matrix_2 = createMatrixFromArray((int[]) {
+                                                    1, 1, 1, 0,
+                                                    0, 0, 1, 1,
+                                                    1, 0, 0, 0},
+                                            3, 4);
+    int result_2 = task_5(matrix_2, 3, 4);
+    assert(result_2 == 11);
+}
+
 
 void test_lab20() {
     //test_task_1();
     //test_task_2();
     //test_task_3();
-    test_task_4();
+    //test_task_4();
+    test_task_5();
 }
