@@ -1,0 +1,27 @@
+# ninja log v5
+0	68	7378996440042206	build.ninja	d763882eb380ab54
+7	81	7368823892392855	CMakeFiles/lab__dm.dir/libs/algorithms/array/array.c.obj	5de33c029b970f81
+60	101	7372170606635166	libs/data_structures/libdata_structures.a	bdf71a508e7cd101
+2	77	7368832421929944	CMakeFiles/lab__dm.dir/libs/algorithms/ordered_array.c.obj	824bcf9d1d3c628a
+12	80	7368823892392855	libs/algorithms/CMakeFiles/algorithms.dir/array/array.c.obj	c4891cc16b4c929a
+2	63	7372170606224796	CMakeFiles/lab__dm.dir/main.c.obj	ff952cb21e0f60d5
+7	59	7372170606214788	CMakeFiles/lab__dm.dir/libs/data_structures/bitset/bitset.c.obj	e934124ebe16a226
+9	60	7372170606224796	libs/data_structures/CMakeFiles/data_structures.dir/bitset/bitset.c.obj	117da96827089568
+6	73	7368832421929944	libs/algorithms/CMakeFiles/algorithms.dir/ordered_array.c.obj	1dd7be4eab0992df
+2	80	7372153381356822	CMakeFiles/lab__dm.dir/libs/data_structures/matrix/matrix.c.obj	7ee49b1698c59c22
+73	113	7368832422340300	libs/algorithms/libalgorithms.a	dcc0d35c44f4cc55
+43	105	7372167993770325	lab__dm.exe	523b59d77b2d282b
+5	41	7372170606024612	CMakeFiles/lab__dm.dir/libs/data_structures/bitset/autotest_bitset.c.obj	3bc9006642386fd2
+6	80	7372153381356822	libs/data_structures/CMakeFiles/data_structures.dir/matrix/matrix.c.obj	1974f03f49cde746
+0	73	7378996440042206	build.ninja	d763882eb380ab54
+4	123	7378996441423463	CMakeFiles/lab__dm.dir/main.c.obj	ff952cb21e0f60d5
+2	124	7378996441423463	CMakeFiles/lab__dm.dir/libs/data_structures/lab20/lab20.c.obj	7b746d53d3ba2504
+6	124	7378996441423463	libs/data_structures/CMakeFiles/data_structures.dir/lab20/lab20.c.obj	ac4926dad5be0861
+124	220	7378996442404349	libs/data_structures/libdata_structures.a	deb9e8e3b380157c
+5	55	7378998005174321	libs/data_structures/CMakeFiles/data_structures.dir/lab20/lab20.c.obj	ac4926dad5be0861
+2	58	7378998005174321	CMakeFiles/lab__dm.dir/libs/data_structures/lab20/lab20.c.obj	7b746d53d3ba2504
+55	96	7378998005584688	libs/data_structures/libdata_structures.a	deb9e8e3b380157c
+5	53	7378998115254321	libs/data_structures/CMakeFiles/data_structures.dir/lab20/lab20.c.obj	ac4926dad5be0861
+2	57	7378998115254321	CMakeFiles/lab__dm.dir/libs/data_structures/lab20/lab20.c.obj	7b746d53d3ba2504
+54	92	7378998115644673	libs/data_structures/libdata_structures.a	deb9e8e3b380157c
+92	162	7378998116315280	lab__dm.exe	34e0c13e154df609
