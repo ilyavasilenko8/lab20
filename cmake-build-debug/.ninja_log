@@ -35,3 +35,8 @@
 7	67	7379008980729377	libs/data_structures/CMakeFiles/data_structures.dir/lab20/lab20.c.obj	ac4926dad5be0861
 68	112	7379008981189795	libs/data_structures/libdata_structures.a	deb9e8e3b380157c
 112	177	7379008981810359	lab__dm.exe	34e0c13e154df609
+2	49	7379025136784882	CMakeFiles/lab__dm.dir/main.c.obj	ff952cb21e0f60d5
+6	70	7379025137005060	libs/data_structures/CMakeFiles/data_structures.dir/lab20/lab20.c.obj	ac4926dad5be0861
+5	74	7379025137005060	CMakeFiles/lab__dm.dir/libs/data_structures/lab20/lab20.c.obj	7b746d53d3ba2504
+70	109	7379025137395414	libs/data_structures/libdata_structures.a	deb9e8e3b380157c
+109	172	7379025137995959	lab__dm.exe	34e0c13e154df609

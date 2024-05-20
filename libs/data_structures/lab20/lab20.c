@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include "D:\lab__dm\libs\data_structures\matrix\matrix.h"
+#include "D:\Test\string\String\tasks\string_.h"
 #include "assert.h"
 #include "lab20.h"
+
+int atoi(char *string);
 
 int **task1(int n, int query[][4], size_t size) {
     matrix result = getMemMatrix(n, n);
@@ -172,20 +175,32 @@ void task_3(int filter, int matrix[filter][filter]) {
 }
 
 void test_task_3() {
-    int matrix_1[3][3] = {{10, 20, 30}, {25, 35, 45}, {15, 25, 35}};
+    int matrix_1[3][3] = {{10, 20, 30},
+                          {25, 35, 45},
+                          {15, 25, 35}};
     int filter_1 = 3;
     task_3(filter_1, matrix_1);
-    int true_data_1[3][3] = {{10, 20, 30}, {25, 25, 45}, {15, 25, 35}};
+    int true_data_1[3][3] = {{10, 20, 30},
+                             {25, 25, 45},
+                             {15, 25, 35}};
     for (int i = 0; i < filter_1; i++) {
         for (int j = 0; j < filter_1; j++) {
             assert(matrix_1[i][j] == true_data_1[i][j]);
         }
     }
 
-    int matrix_2[5][5] = {{15, 10, 15, 20, 30}, {45, 10, 35, 20, 40}, {35, 25, 10, 45, 15}, {30, 15, 50, 10, 5}, {15, 20, 40, 35, 10}};
+    int matrix_2[5][5] = {{15, 10, 15, 20, 30},
+                          {45, 10, 35, 20, 40},
+                          {35, 25, 10, 45, 15},
+                          {30, 15, 50, 10, 5},
+                          {15, 20, 40, 35, 10}};
     int filter_2 = 5;
     task_3(filter_2, matrix_2);
-    int true_data_2[5][5] = {{15, 10, 15, 20, 30}, {45, 25, 20, 20, 40}, {35, 30, 25, 20, 15}, {30, 30, 30, 25, 5}, {15,20, 40, 35, 10}};
+    int true_data_2[5][5] = {{15, 10, 15, 20, 30},
+                             {45, 25, 20, 20, 40},
+                             {35, 30, 25, 20, 15},
+                             {30, 30, 30, 25, 5},
+                             {15, 20, 40, 35, 10}};
     for (int i = 0; i < filter_2; i++) {
         for (int j = 0; j < filter_2; j++) {
             assert(matrix_2[i][j] == true_data_2[i][j]);
@@ -193,8 +208,53 @@ void test_task_3() {
     }
 }
 
+void task_4(char **cpdomains, int size) {
+    int domains_number = 0;
+    for (int i = 0; i < size; i++) {
+        size_t len = strlen(cpdomains[i]);
+        char *string = cpdomains[i];
+        for (char *s = string; s != string + len; s++) { if (*s == '.') { domains_number++; }}
+        domains_number++;
+    }
+    domain domains[domains_number];
+    int domains_size = 0;
+    for (int i = 0; i < size; i++) {
+        int visits = atoi(cpdomains[i]);
+        size_t len = strlen(cpdomains[i]);
+        char *string = cpdomains[i];
+        for (char *s = string + len; s != string; s--) {
+            if (*s == '.' || *s == ' ') {
+                bool is_new_domain = true;
+                for (int j = 0; j < domains_size && is_new_domain; j++) {
+                    if (strcmp(s + 1, domains[j].name) == 0) {
+                        domains[j].visits_number += visits;
+                        is_new_domain = false;
+                    }
+                }
+                if (is_new_domain) {
+                    domains[domains_size].visits_number = visits;
+                    domains[domains_size].name = s + 1;
+                    domains_size++;
+                }
+            }
+        }
+    }
+    for (int i = 0; i < domains_size; i++) { printf("%d %s\n", domains[i].visits_number, domains[i].name); }
+}
+
+void test_task_4() {
+    char *cpdomains_1[] = {"9001 discuss.codeforces.com"};
+    int size_1 = 1;
+    task_4(cpdomains_1, size_1);
+    printf("\n");
+    char *cpdomains_2[] = {"900 google.mail.com", "50 yahoo.com", "1 intel.mail.com", "5 wiki.org"};
+    int size_2 = 4;
+    task_4(cpdomains_2, size_2);
+}
+
 void test_lab20() {
     //test_task_1();
     //test_task_2();
-    test_task_3();
+    //test_task_3();
+    test_task_4();
 }
