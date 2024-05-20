@@ -50,6 +50,91 @@ void test_task_1() {
     }
 }
 
+int count_living_neighboring_cells(int m, int n, int board[m][n], int i, int j) {
+    int res = 0;
+
+    if (i != 0) {
+        res += board[i - 1][j];
+        if (j != 0) {
+            res += board[i - 1][j - 1];
+        }
+        if (j != m - 1) {
+            res += board[i - 1][j + 1];
+        }
+    }
+
+    if (i != n - 1) {
+        res += board[i + 1][j];
+        if (j != 0) {
+            res += board[i + 1][j - 1];
+        }
+        if (j != m - 1) {
+            res += board[i + 1][j + 1];
+        }
+    }
+    if (j != 0) {
+        res += board[i][j - 1];
+    }
+    if (j != m - 1) {
+        res += board[i][j + 1];
+    }
+    return res;
+}
+
+void task_2(int m, int n, int board[n][m]) {
+    int result[m][n];
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            int living_cells = count_living_neighboring_cells(m, n, board, i, j);
+
+            if (board[i][j]) {
+                if (living_cells < 2) {
+                    result[i][j] = 0;
+                } else if (living_cells == 2 || living_cells == 3) {
+                    result[i][j] = 1;
+                } else {
+                    result[i][j] = 0;
+                }
+            } else {
+                if (living_cells == 3) {
+                    result[i][j] = 1;
+                } else {
+                    result[i][j] = 0;
+                }
+            }
+        }
+    }
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            board[i][j] = result[i][j];
+        }
+    }
+}
+
+void test_task_2() {
+    int board[4][3] = {{0, 1, 0},
+                       {0, 0, 1},
+                       {1, 1, 1},
+                       {0, 0, 0}};
+    int m = 3;
+    int n = 4;
+    task_2(m, n, board);
+    int true_data[4][3] = {{0, 0, 0},
+                           {1, 0, 1},
+                           {0, 1, 1},
+                           {0, 1, 0}};
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            assert(true_data[i][j] == board[i][j]);
+        }
+    }
+}
+
+
 void test_lab20() {
-    test_task_1();
+    //test_task_1();
+    test_task_2();
 }
