@@ -68,6 +68,10 @@ void task_10(char *file_name, int n);
 
 void test_task_10(int argc, char **argv);
 
+void task_11();
+
+void test_task_11();
+
 void test_lab20();
 
 #endif //LAB__DM_LAB20_H
