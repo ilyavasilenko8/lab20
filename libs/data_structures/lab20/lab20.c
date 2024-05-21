@@ -4,6 +4,7 @@
 #include "lab20.h"
 #include <malloc.h>
 #include <string.h>
+#include "D:\Test\lab_files\Files\files.h"
 
 int **task1(int n, int query[][4], size_t size) {
     matrix result = getMemMatrix(n, n);
@@ -444,6 +445,35 @@ void test_task_8() {
     assert(strcmp(result_2, true_data_2) == 0);
 }
 
+void fill_file(int *numbers, int size, char *file_name) {
+    FILE *file;
+    file = fopen(file_name, "w");
+    for (int i = 0; i < size; i++) { fprintf(file, "%d ", numbers[i]); }
+    fclose(file);
+}
+
+void task_9(int *numbers, int size, int n, char *file_name_1, char *file_name_2) {
+    FILE *write_file = fopen(file_name_2, "w");
+    FILE *read_file = fopen(file_name_1, "r");
+    int number;
+    while (fscanf(read_file, "%d", &number) != EOF) { if (number < n) { fprintf(write_file, "%d ", number); }}
+    fclose(write_file);
+    fclose(read_file);
+}
+
+void test_task_9(int argc, char **argv) {
+    int numbers[10] = {1, 4, 3, 5, 2, 4, 10, 4, 0, -1};
+    int size = 10;
+    int n = atoi(argv[1]);
+    char *file_name_1 = argv[2];
+    char *file_name_2 = argv[3];
+    fill_file(numbers, size, file_name_1);
+    task_9(numbers, size, n, file_name_1, file_name_2);
+    char *true_data[1] = {"1 4 3 2 4 4 0 -1 "};
+    assert(assert_file(file_name_2, true_data));
+    printf("correct");
+}
+
 void test_lab20() {
     //test_task_1();
     //test_task_2();
@@ -452,5 +482,6 @@ void test_lab20() {
     //test_task_5();
     //test_task_6();
     //test_task_7();
-    test_task_8();
+    //test_task_8();
+    test_task_9();
 }

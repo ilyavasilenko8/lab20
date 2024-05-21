@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include "D:\lab__dm\libs\data_structures\matrix\matrix.h"
 
+
 typedef struct domain{
     int visits_number;
     char *name;
@@ -56,6 +57,12 @@ void test_task_7();
 void task_8(char *s, int *indices, char *result, int size);
 
 void test_task_8();
+
+void fill_file(int *numbers, int size, char *file_name);
+
+void task_9(int *numbers, int size, int n, char *file_name_1, char *file_name_2);
+
+void test_task_9(int argc, char **argv);
 
 void test_lab20();
 
